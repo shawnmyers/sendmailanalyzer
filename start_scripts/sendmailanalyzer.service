@@ -12,9 +12,9 @@
 # For more info about custom unit files, see
 # http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_custom_unit_file.3F
 [Unit]
-Description=SendmailAnalyzer a sendmail/postfix log analyzer
-Requires=sendmail.service
-After=sendmail.service
+Description=SendmailAnalyzer
+#Requires=sendmail.service
+#After=sendmail.service
 #Requires=postfix.service
 #After=postfix.service
 
@@ -22,7 +22,7 @@ After=sendmail.service
 Type=forking
 PIDFile=/var/run/sendmailanalyzer.pid
 ExecStart=/usr/local/sendmailanalyzer/sendmailanalyzer -f
-ExecStop=/bin/bash -c "/bin/kill -TERM `/usr/bin/cat /var/run/sendmailanalyzer.pid`"
+ExecStop=/bin/kill -TERM sendmailanalyzer
 
-[Install]
+[Install
 WantedBy=multi-user.target
